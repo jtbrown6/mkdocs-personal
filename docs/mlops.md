@@ -1,4 +1,6 @@
-# ML on Kubernetes with KubeFlow
+# MLOps
+
+## ML on Kubernetes with KubeFlow
 
 ## Building ML Apps Overview and Challenges
 
