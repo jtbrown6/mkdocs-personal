@@ -1,0 +1,1234 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../kubeadm/">
+      
+      
+        <link rel="next" href="../mlops/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
+    
+    
+      
+        <title>Kubernetes Therapy - My Second Brain</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kubernetes-therapy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="My Second Brain" class="md-header__button md-logo" aria-label="My Second Brain" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Second Brain
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kubernetes Therapy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="You Think Darkness Is Your Ally"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="You Think Darkness Is Your Ally" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../kubeadm/" class="md-tabs__link">
+        
+  
+    
+  
+  KubeAdm
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Kubernetes Therapy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mlops/" class="md-tabs__link">
+        
+  
+    
+  
+  MLOps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="My Second Brain" class="md-nav__button md-logo" aria-label="My Second Brain" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    My Second Brain
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeadm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KubeAdm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Kubernetes Therapy
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Therapy
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ckad-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      CKAD Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-plane-components-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane Components (C.A.S.E.)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Plane Components (C.A.S.E.)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worker-node-components-pkr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Node Components (P.K.R.)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worker Node Components (P.K.R.)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worker-node-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Node Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flow-of-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flow of Actions 
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extending-cluster-functionality-through-common-add-ons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extending Cluster Functionality through Common Add-Ons
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Components
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mlops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="kubernetes-therapy">Kubernetes Therapy</h1>
+<h2 id="purpose">Purpose</h2>
+<p>A good way to find out how to deal with the intracacies of configuring and running Kubernetes On-Prem.</p>
+<h2 id="ckad-commands">CKAD Commands</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># General Commands</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>kubectl<span class="w"> </span>&lt;action&gt;<span class="w"> </span>--help
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>kubectl<span class="w"> </span>run<span class="w"> </span>&lt;podName&gt;<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--restart<span class="o">=</span>Never<span class="w"> </span>--dry-run<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>output.yaml
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nginx<span class="w"> </span>/bin/bash<span class="w"> </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nginx<span class="w"> </span>ls<span class="w"> </span>/path/found/when/running/describe/pod
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--all-namespaces
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>kubectl<span class="w"> </span>get<span class="w"> </span>&lt;item&gt;<span class="w"> </span>&lt;itemName&gt;<span class="w"> </span>--export<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>exported.yaml
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Deployment Commands</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w">  </span>--replicas<span class="o">=</span><span class="m">3</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deploy<span class="w"> </span>busybox<span class="w"> </span>--export<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>exported.yaml
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>kubectl<span class="w"> </span>create<span class="w"> </span>job<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>kubectl<span class="w"> </span>create<span class="w"> </span>cronjob<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--schedule<span class="o">=</span><span class="s2">&quot;* * * * *&quot;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># Force Update</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>kubectl<span class="w"> </span><span class="nb">set</span><span class="w"> </span>image<span class="w"> </span>deploy/nginx<span class="w"> </span><span class="nv">nginx</span><span class="o">=</span>nginx:1.9.1
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># Rollback Update</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deploy/nginx
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>status<span class="w"> </span>deploy/nginx
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># Observability (Needs Heapster)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>kubectl<span class="w"> </span>top<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>my-namespace
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>kubectl<span class="w"> </span>top<span class="w"> </span>node<span class="w"> </span>-n<span class="w"> </span>my-namespace
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>podName<span class="w"> </span>containerName<span class="w">    </span>&lt;-<span class="w"> </span>stream<span class="w"> </span>logs<span class="w"> </span>live,<span class="w"> </span>container<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>left<span class="w"> </span>out
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># Service</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>kubectl<span class="w"> </span>expose<span class="w"> </span>pod<span class="w"> </span>redis<span class="w"> </span>--port<span class="o">=</span><span class="m">6379</span><span class="w"> </span>--name<span class="w"> </span>redis-service<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="c1"># Taint </span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>kubectl<span class="w"> </span>taint<span class="w"> </span>nodes<span class="w"> </span>NodeA<span class="w"> </span><span class="nv">app</span><span class="o">=</span>blue:NoSchedule
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="c1"># Secrets</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>my-secret<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">foo</span><span class="o">=</span>bar<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>--dry-run<span class="w"> </span>&gt;<span class="w"> </span>my-secret.yaml
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>SecretName<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w">    </span>&lt;-<span class="w"> </span>view<span class="w"> </span>secret
+</code></pre></div>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#Flow">Flow of Actions</a></li>
+<li><a href="#kube-proxy">Deep Dive: Kube Proxy</a></li>
+<li><a href="#4Cs">Deep Dive: Security 4C's</a></li>
+<li><a href="#network-plugins">Deep Dive: Network Providers</a></li>
+</ol>
+<p><strong>Table of Contents</strong>
+- Control Plane Components
+- Work Node Components
+- Flow of Actions
+- Extending w/ Add-Ons
+- Additional Components
+- Deep Dive - Operators
+- Deep Dive - Kube Proxy
+- Deep Dive - Network Plugins
+- Deep Dive - Security (4C's)
+- Deep Dive - StatefulSets (CassandraDB)</p>
+<h2 id="control-plane-components-case">Control Plane Components (C.A.S.E.)</h2>
+<p>Contains 4 Total Components
+1. API Server
+2. etcd
+3. Scheduler
+4. Controller Manager</p>
+<h3 id="control-plane-details">Control Plane Details</h3>
+<ul>
+<li>
+<p><strong>API Server:</strong> communicates with etcd to read and write the desired state. Desired state is provided from user performing kubectl tasks like sending a pod definition in the form of yaml. Responsible for processing requests for creating and updating resources</p>
+</li>
+<li>
+<p><strong>etcd:</strong> key-value store used as primary database; stores the desired state of cluster </p>
+</li>
+<li>
+<p><strong>Scheduler:</strong> looks for pods in the pending state that have not been assigned to node yet selects them based on factors like resources, afinity rules and which nodes have capacity. once selected, must talk to the <code>kubelet</code> which will then take on the responisibility of the pod</p>
+</li>
+<li>
+<p><strong>Controller Manager:</strong> focuses on the controllers that handle specific types of resources and their desired state for <code>reconciliation</code> and <code>corrective</code> purposes. so the replication controller kicks off and ensure the desired pod replicas are maintained</p>
+</li>
+</ul>
+<h2 id="worker-node-components-pkr">Worker Node Components (P.K.R.)</h2>
+<p>Contains a total of 3 Components
+1. Kubelet
+2. Kube Proxy
+3. Container Runtime</p>
+<h3 id="worker-node-details">Worker Node Details</h3>
+<ul>
+<li>
+<p><strong>Kubelet:</strong> agent that resides on the node and recieves pod assignment from the scheduler which updates that pod information on itself. From there it communicates with the <code>container runtime</code> to create and manage the containers for the pods. it also monitors the nodes health and status of the containers and restarts/stops/deletes if need be while also reporting node status and resouce usage back to control plane</p>
+</li>
+<li>
+<p><strong>Kube Proxy:</strong> maintains network rules on nodes to enable and manage network connectivity to and from pods. so on the nodes, there are network rules typically IPTables (linux based firewall rules for NAT) to define network traffic routing to pods based on service selectors and IP addresses; this also handles when new services are created and handling the forwarding of traffic to the backend pods correctly and even uses the services DNS name alongside the ClusterIP. So the NodePort, ClusterIP, LoadBalancer etc supports the traffic of these. </p>
+</li>
+<li>
+<p><strong>Container Runtime:</strong> software responsible for doing the <code>docker run/build</code> commands via Containerd</p>
+</li>
+</ul>
+<h2 id="flow-of-actions">Flow of Actions <a name="Flow"></a></h2>
+<p>Goal is always understanding desired state
+1. User runs <code>kubectl create pod</code> command to <code>API Server</code>
+2. <code>API Server</code> stores this desired state into the <code>etcd</code> store
+3. The <code>Scheduling Phases</code> kicks in and watches for <code>pending</code> state pods and evaluates for various factors and selects appropriate node and assigns
+4. The <code>Kubelet Phase</code> activates and accepts assignment and interacts with <code>Container Runtime</code> to create the containers for that pod
+5. The <code>Kubelet</code> updates status of the containers to <code>etcd</code> in Control Plane
+6. The <code>KubeProxy</code> begins to handle the networking </p>
+<h2 id="extending-cluster-functionality-through-common-add-ons">Extending Cluster Functionality through Common Add-Ons</h2>
+<ol>
+<li>
+<p><strong>CoreDNS:</strong> handles DNS resolution for pods and services using the following structure <code>serviceName.namespace.svc.cluster.local</code> </p>
+</li>
+<li>
+<p><strong>Dashboard:</strong> WebUI for monitoring cluster</p>
+</li>
+<li>
+<p><strong>Ingress Controllers:</strong> enables external access to services along with load-balancing</p>
+</li>
+<li>
+<p><strong>Network Policy:</strong> not to be confused with network plugin, but this handles traffic flow between pods based on rules</p>
+</li>
+<li>
+<p><strong>Service Mesh:</strong> categorized as <code>infrastructure</code> add-ons which enhance networking by adding features like traffic-management, observability and security for microservices</p>
+</li>
+<li>
+<p><strong>Flux/Flagger:</strong> categories as <code>tools</code> not add-ons which handle automation of app deployments, manage releases and progressive delivery like canary deployments</p>
+</li>
+</ol>
+<h2 id="additional-components">Additional Components</h2>
+<ol>
+<li>
+<p><strong>ConfigMaps:</strong> allows to <code>decouple</code> configuration data like <code>API Endpoints</code> and <code>Connection Strings</code> from the pod definitions so you can update pod configurations without actually changing the pod specs</p>
+</li>
+<li>
+<p><strong>Labels and Selectors:</strong> Labels are <code>key-value</code> pairs and Selectors <code>filter</code> based on these labels; So you can have a pod with the <code>prod</code> label and apply policies to the selector for that environment</p>
+</li>
+<li>
+<p><strong>Annotations:</strong> adds additional metadata so you can track <code>buildIDs</code> or <code>ReleaseNotes</code> </p>
+</li>
+<li>
+<p><strong>StatefulSets:</strong> helps with consistency for deploying <code>databases</code> or <code>queues</code> when you need guarantees for consistent network hostnames and stable storage after pod restarts</p>
+</li>
+<li>
+<p><strong>DaemonSets:</strong> ensure pod is running on every node which is good for <code>monitoring agents</code> or log collectors; Kured is a DaemonSet</p>
+</li>
+<li>
+<p><strong>Custom Resource Definitions (CRDs):</strong> define custom resources and controllers which is good for a Machine Learning Model so Kubernetes can understand and manage it like it was a built in resource</p>
+</li>
+</ol>
+<h1 id="kubernetes-deep-dives">Kubernetes Deep Dives</h1>
+<h2 id="kubernetes-operators">Kubernetes Operators</h2>
+<p><strong>What:</strong> special type of controller that leverage the use of <code>Custom Resource Definitions</code> to handle complex application configurations</p>
+<p><strong>Benefits:</strong> users can take high level configurations and settings within a <code>CRD</code> and the <code>Operator</code> will watch for that CRD and implement into <code>low-level</code> actions within Cluster. Allows you to focus on defining desired state while the operator will handle the operational task to make it happen!</p>
+<p><strong>Helm-Chart Comparison:</strong> although they have somewhat of the same functionality, Operators focus on complex application deployments due to their integration directly with Kubernetes since they are basically controllers which will handle current/desired state</p>
+<h2 id="kube-proxy">Kube-Proxy <a name="kube-proxy"></a></h2>
+<p><strong>Overview:</strong> manages network connectivity for pods &amp;&amp; ensures services are accessible in/outside cluster and ensures they go to healthy pods via health-checks</p>
+<h3 id="key-aspects-of-kube-proxy">Key Aspects of Kube Proxy</h3>
+<ol>
+<li>
+<p><strong>Network Rules Management:</strong> since this sits on <code>NODES</code> the network rules are applied via IPTables and define pod traffic routing using their <code>IP Address</code> or <code>Service Selector</code></p>
+</li>
+<li>
+<p><strong>Service Exposure:</strong> when a service is created, backend pods need to have that traffic forwards to them. Pods also need to be accessible via DNS name or ClusterIP address</p>
+</li>
+<li>
+<p><strong>Service Types:</strong> handles the big 4, ClusterIP, NodePort, LoadBalancer, and ExternalDNS </p>
+</li>
+</ol>
+<h2 id="network-plugins">Network Plugins <a name="network-plugins"></a></h2>
+<ol>
+<li>
+<p><strong>Overlay Networks:</strong> virtual networks built on-top of physical infrastructure; biggest value is they allow <code>pods on different nodes</code> to talk to each other as if they were on <code>the same local network</code> even if they are in different physical locations</p>
+</li>
+<li>
+<p><strong>Pod to Node Commuication:</strong> typically this is done using <code>encapsulation</code> techniques. If a pod on NodeA wants to talk to pod on NodeB, data packets are encapsulated with additional information like <code>source and destination IP addresses</code> and are sent over network and <code>decapsulated</code> thereafter</p>
+</li>
+<li>
+<p><strong>Scalability:</strong> as you add more clusters, nodes, or pods to cluster, the network plugins dynamically manage IP address allocation and routing keeping everything isolated </p>
+</li>
+</ol>
+<p>Network Provider
+- Flannel
+- Calico</p>
+<p>Flannel
+- uses an overlay network which makes things simple
+- less advanced features
+- not ideal for organizations that have strict security requirements BUT you can add in other projects to improve security
+- incurs extra encapsulation which slows down communications due to increased size of packets because it has information in the packet that is necessary for reaching the destination. furthermore, increased CPU resources due to encapsulation/decapsulation so latency is increased which is not good for high network traffic environments</p>
+<p>Calico
+- does not use a overlay network, which improves performance and scalability
+- uses BGP to route packets between host so they dont need an extra layer wrapped with encapsulation to move between hosts
+- directs packets natively without an extra step of wrapping traffic in an additional layer
+- </p>
+<h1 id="understanding-overlay-networks">Understanding Overlay Networks</h1>
+<p><strong>Purpose:</strong> allows pods and nodes to communicate regardless if they are hosted on different machines and subnets in a cluster</p>
+<p><strong>Components:</strong>
+- Encapsulation: traffic is wrapped with the sourceNode and decapsulated at the <code>destinationNode</code>
+- Routing/Forwarding: decisions are done with the overlay network NOT with the physical network. Overlay will have its own routeTables and protocols to direct traffic</p>
+<h1 id="understanding-networking-traffic">Understanding Networking Traffic</h1>
+<h2 id="flannel-traffic-flow-example">Flannel - Traffic Flow Example</h2>
+<p><strong>Steps:</strong>
+1. ContainerA tries to talk to ContainerB on a different Host
+2. ContainerA traffic goes to HostA's bridge
+3. HostA Bridge tries to get the MAC address of ContainerB via ARP
+4. Since ContainerB is on HostB, flannel daemon wraps into Layer3 over UDP over physical network</p>
+<h2 id="calico-traffic-flow-example">Calico - Traffic Flow Example</h2>
+<p><strong>Steps:</strong>
+1. Already works at Layer3
+2. There is a routing rule for a default gateway of 169.254.1.1
+3. ContainerA talks to default gateway FIRST
+4. Because of the BGP client running on the Node, it is synced and knows how to route to the destination</p>
+<h3 id="differences">Differences</h3>
+<ul>
+<li>Calico makes use of routing principals like how the internet works </li>
+<li>Flannel makes use of L2 broadcast domains</li>
+</ul>
+<h2 id="security-4cs">Security - 4C's <a name="4Cs"></a></h2>
+<ol>
+<li>Code: Secure apps and libraries</li>
+<li>Container: Vulnerability Scanning, Control and Protect Runtime</li>
+<li>Cluster: restrict access to Control Plane and Nodes</li>
+<li>Cloud: Secure Access to API's and Infrastructure (baremetal)</li>
+</ol>
+<h2 id="statefulsets-and-cassandradb">StatefulSets and CassandraDB</h2>
+<p>When creating a StatefulSet, there are multiple components that are deployed or needed as well.
+- Pods get stable hostnames and ordinal index ie pod01, pod02
+- A headless service (no ClusterIP) is deployed to discover individual pods via DNS
+- StorageClass and PVC's are deployed which bind persistent storage to pods even if they are replaced</p>
+<p><strong>CassandraDB:</strong> because of its distributed nature, it uses sharding so data is distributed amongst each other. <strong>Benefit:</strong> although using a DB hosted elsewhere is useful, when you need local data or to keep it closer to the apps, integration with K8 ecosystem like rolling updates or scaling and of course the scaling and availability of K8s, this is uesful.</p>
+<h1 id="storage-in-k8s-important-concepts">Storage in K8s Important Concepts</h1>
+<p><strong>Options</strong>
+1. Leverage PV and PVC's via HostPath
+2. StatefulSets
+3. StorageClass w/ Dynamic Provisioning</p>
+<p>Important Notes
+- Storage Classes allow for pods to claim a PV even if there is no match
+- PVC's consume PV resources like Pods do Nodes</p>
+<p>Storage Classes
+- helps to define different types of storage that can be leveraged (SSD,HDD)
+- allows for dynamic provisioning if PVC's are leveraged
+- defines provisioners for dynamic provisioning Azure Disk, Nutanix or distribed storage like Ceph</p>
+<p>Considerations for Storage Classes
+- on-demand volumes to be created without admins via dynamic provisoning
+- if you need different types of storage for faster or slower apps
+- small environments this is NOT needed</p>
+<h1 id="statefulset-blog">StatefulSet Blog</h1>
+<p><strong>Interesting Links:</strong>
+- Stateful Best Practices <a href="https://loft.sh/blog/kubernetes-statefulset-examples-and-best-practices/">Blog</a>
+- Stateful Redis Guestbook App <a href="https://kubernetes.io/docs/tutorials/stateless-application/guestbook/">Link</a>
+- Stateful WordPress and mySQL Example <a href="https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/">Link</a></p>
+<h2 id="research-topics">Research Topics</h2>
+<ul>
+<li>Primary-replica architecture + fixed pod-name being expected for stateful Applications</li>
+</ul>
+<h2 id="understanding-stateful-applications">Understanding Stateful Applications</h2>
+<p><strong>What:</strong>
+- Stateful Applications: apps that need to store data and keep track of it
+- Examples of StatefuApps: databases like mySQL, Oracle are statefulApps
+- Stateless Apps: these are apps that during each new request, they get <code>new</code> data and process it like Nginx and NodeJS</p>
+<p><strong>Modern Architecture:</strong>
+Stateless Application <code>NodeJS</code> <strong>--connects to --&gt;</strong> StatefulApplication <code>mySQL</code></p>
+<h3 id="understanding-statefulsets">Understanding StatefulSets</h3>
+<p><strong>StatefulSet:</strong> controller that is used to run the stateful app as a <code>pod</code>
+- assigns a <code>sticky identity or ordinal number</code> like <code>pod[0]</code> to each replicaPod vs <code>deployments</code> which get randomIDs
+- new pods are created by cloning the previous pod's data 
+- deleting pods will be done in <code>reverse order</code> so scaling from 4 to 3 will delete the most recent created pod vs randomly</p>
+<h3 id="statefulset-readwrite-process">StatefulSet - Read/Write Process</h3>
+<p><strong>Reading Data:</strong> request is forwarded to any of the 3 pods
+<strong>Writing Data:</strong> request will be forwarded to <code>pod[0]</code> which is the primary and then synced to other pods</p>
+<h2 id="storage-class-example">Storage Class Example</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">#Example Storage Class</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slow</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/no-provisioner</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
+</code></pre></div>
+<p>Persistent Volumes
+- Storage Classes tend to create PVs
+- an additional resource as a volume plugin provisioned by the Cluster Admin</p>
+<p>Persistent Volume Claims
+- requested by the user via the deploy.yaml
+- PVC's consume PV resources like a Pod consumes Node resources
+- Access modes like RWO or RWM determine capabilities 
+- K8 Control Plane will look to match the PVC to the PV. BUT if notExists + Dynamic Provisioning is enabled via StorageClass it will be created regardless</p>
+<h1 id="options">Options</h1>
+<p>To ensure data persistence in Kubernetes, you would typically use a Persistent Volume (PV) and a Persistent Volume Claim (PVC). A Persistent Volume is a piece of storage that has been provisioned by an administrator, while a Persistent Volume Claim is a request for storage by a user. Additionally, you might consider using StatefulSets if your application requires stable, unique network identifiers, stable, persistent storage, and orderly, graceful deployment and scaling.</p>
+<p>Here are the different options you could use to ensure data persistence for your Python Docker container within a Kubernetes cluster:</p>
+<ol>
+<li><strong>Persistent Volumes and Persistent Volume Claims</strong>:</li>
+<li>First, you create a Persistent Volume (PV) that provides the storage resource.</li>
+<li>Next, you create a Persistent Volume Claim (PVC) which claims usage of the PV for your application.</li>
+<li>Finally, you modify your application's deployment configuration to use the PVC.</li>
+</ol>
+<p>Here's how you could do it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># persistent-volume.yaml</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-pv</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">capacity</span><span class="p">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span><span class="w">  </span><span class="c1"># adjust the size as needed</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">  </span><span class="c1"># for demonstration purposes, not suitable for production</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/mnt/data&quot;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nn">---</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1"># persistent-volume-claim.yaml</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-pvc</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nn">---</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="c1"># deployment.yaml</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter-container</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-image-name&gt;</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-storage</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/src/app</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-storage</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">        </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">          </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-pvc</span>
+</code></pre></div>
+<ol>
+<li><strong>StatefulSets with Persistent Volume Claims</strong>:</li>
+<li>StatefulSets are used when you have stateful applications that require stable identifiers and storage.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># statefulset.yaml</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fastapi-counter&quot;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter-container</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-image-name&gt;</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-storage</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/src/app</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="nt">volumeClaimTemplates</span><span class="p">:</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-storage</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">      </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;ReadWriteOnce&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">          </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div>
+<ol>
+<li><strong>Using a Storage Class</strong>:</li>
+<li>Storage Classes provide a way to describe different “classes” of storage offered in the cluster.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># storage-class.yaml</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter-sc</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/no-provisioner</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nn">---</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Then you can reference this Storage Class in your Persistent Volume and Persistent Volume Claim configurations.</span>
+</code></pre></div>
+<p>Replace <code>&lt;your-image-name&gt;</code> with the name of your Docker image. Each of these options has its own set of considerations and trade-offs, so you'll need to choose based on your application's requirements and your environment.</p>
+<h1 id="nutanix-notes-for-storage-not-finished">Nutanix Notes for Storage (Not Finished)</h1>
+<ul>
+<li>RWO (Nutanix Volumes) vs RWM (Nutanix Files) or others</li>
+<li>relationship between pods and PVC or PV's, what gets x and why?</li>
+</ul>
+<p>Simple Example LI5
+- Storage Classes: different types of boxes
+- PV: the actual box being granted
+- PVCs: tickets asking for the box
+- StatefulSet: already reserved box regular users get everytime </p>
+<hr />
+<p>Persisting Data on Nutanix Kubernetes
+0. Create the Nutanix StorageClass (not 100% reqired since spec.storageClass if empty will default to pvc without <code>dynamic provisioning</code> being used)
+1. Create PV that provides storage
+2. Create PVC that uses the PV created already
+3. Pod or Deploy yaml will mount the volume referencing the PVC</p>
+<h2 id="create-pv">Create PV</h2>
+<p><strong>Note:</strong> Need to use the correct Nutanix specs for this. This will be the spec.storageClassName which will reference the provider
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># persistent-volume.yaml</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-pv</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">capacity</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span><span class="w">  </span><span class="c1"># adjust the size as needed</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">  </span><span class="c1"># for demonstration purposes, not suitable for production</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/mnt/data&quot;</span>
+</code></pre></div></p>
+<h2 id="create-pvc">Create PVC</h2>
+<p><strong>Note:</strong> </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># persistent-volume-claim.yaml</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-pvc</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div>
+<h2 id="sample-deploymentyaml">Sample Deployment.yaml</h2>
+<p>Note: spec.volumes will point to the pvc.claimName. Since the app source data lives in the /usr/src/app folder, mount it there to hold the required files</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># deployment.yaml</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fastapi-counter-container</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-image-name&gt;</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-storage</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/src/app</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-storage</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">        </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">          </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">countit-pvc</span>
+</code></pre></div>
+<h1 id="persistent-storage-with-nginx">Persistent Storage with Nginx</h1>
+<p>Mounting Volumes vs Attaching Local Directory
+- <strong>Mounting:</strong> this is helpful when you have an application that will perform some CRUD actions
+- <strong>Attaching:</strong> more useful when you are developing real-time and need to test. Think of this as <code>dev-containers</code></p>
+<h1 id="table-of-contents_1">Table of Contents</h1>
+<ul>
+<li>Simple with Custom Starting Page</li>
+<li>Bi-Directional Development with Volume Mount to Local</li>
+<li>Attaching Volumes for CRUD - Sample FastAPI</li>
+<li>Transitioning to Kubernetes</li>
+</ul>
+<h1 id="option-1-create-a-simple-nginx-custom-starting-page"><strong>Option 1:</strong> Create a Simple Nginx Custom Starting Page</h1>
+<p><strong>Purpose:</strong>
+- You require static files to be ready when container loads
+- Regardless of pod restarts, data will persists</p>
+<p>Steps
+1. Create a simple <code>custom.html</code> page
+2. Build a simple Dockerfile and store html into defaut directory
+3. Test</p>
+<h2 id="1-create-simple-html-file">1. Create Simple HTML File</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Custom Nginx Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to my custom Nginx page!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Version v1<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="2-build-dockerfile-and-move">2. Build Dockerfile and Move</h2>
+<p>Create <code>Dockerfile</code>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>FROM<span class="w"> </span>nginx
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>COPY<span class="w"> </span>custom.html<span class="w"> </span>/usr/share/nginx/html/index.html
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;nginx&quot;</span>,<span class="w"> </span><span class="s2">&quot;-g&quot;</span>,<span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="o">]</span>
+</code></pre></div></p>
+<h2 id="3-testing">3. Testing</h2>
+<p><strong>Build Container:</strong> <code>docker build -t custom-nginx:v1</code></p>
+<p><strong>Run Container:</strong> <code>docker run -d -p 80:80 custom-nginx:v1</code></p>
+<p>Navigate to <code>localhost:80</code></p>
+<h1 id="option-2-mounting-and-exposing-volumes-in-containers"><strong>Option 2:</strong> Mounting and Exposing Volumes in Containers</h1>
+<p><strong>Purpose:</strong>
+- When you require access to local storage
+- Perfect for Real-Time Development</p>
+<p>Steps
+1. Know the path of the local directory you would like to mount
+2. Create a temp file called <code>index.html</code>
+3. Pass in the location in the docker run command</p>
+<h3 id="2-pass-in-location-in-docker-command">2. Pass in Location in Docker Command</h3>
+<p>Run Container: <code>docker run -d -p 80:80 --name tempcustom-nginx -v /home/devops/nginx:/usr/share/nginx/html nginx</code></p>
+<p>Example <code>Dockerfile</code>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>FROM<span class="w"> </span>nginx
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>COPY<span class="w"> </span>./custom-nginx-html<span class="w"> </span>/usr/share/nginx/html
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>EXPOSE<span class="w"> </span><span class="m">80</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Note: you can change the /etc/nginx/conf.d file to change the index file name. Mount this before because it requires a restart</span>
+</code></pre></div></p>
+<h1 id="option-3-volumes-attaching-w-fastapi"><strong>Option 3:</strong> Volumes Attaching w/ FastAPI</h1>
+<p>Steps
+1. Create simple .py app that will have an /increment endpoint and add to a file we can /get anytime
+2. Build the Dockerfile
+3. Create and Ensure Volume is attached to running container</p>
+<h2 id="1-create-mainpy">1. Create <code>main.py</code></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">COUNTER_FILE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/usr/src/app/counter.txt&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">def</span> <span class="nf">read_counter</span><span class="p">():</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="k">if</span> <span class="n">COUNTER_FILE</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">COUNTER_FILE</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="k">def</span> <span class="nf">write_counter</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>    <span class="n">COUNTER_FILE</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/increment/&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="k">def</span> <span class="nf">increment_counter</span><span class="p">():</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>    <span class="n">count</span> <span class="o">=</span> <span class="n">read_counter</span><span class="p">()</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>    <span class="n">write_counter</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">count</span><span class="p">}</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/get/&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="k">def</span> <span class="nf">get_counter</span><span class="p">():</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">read_counter</span><span class="p">()}</span>
+</code></pre></div>
+<h2 id="2-create-dockerfile">2. Create Dockerfile</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Use the official Python image as the base image</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>FROM<span class="w"> </span>python:3.9-slim-buster
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Set the working directory</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>WORKDIR<span class="w"> </span>/usr/src/app
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Copy the FastAPI application</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>COPY<span class="w"> </span>./main.py<span class="w"> </span>.
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="c1"># Install FastAPI and Uvicorn</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>fastapi<span class="w"> </span>uvicorn
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="c1"># Expose the port the app runs on</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>EXPOSE<span class="w"> </span><span class="m">80</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="c1"># Command to run the application</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;uvicorn&quot;</span>,<span class="w"> </span><span class="s2">&quot;main:app&quot;</span>,<span class="w"> </span><span class="s2">&quot;--host&quot;</span>,<span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span>,<span class="w"> </span><span class="s2">&quot;--port&quot;</span>,<span class="w"> </span><span class="s2">&quot;80&quot;</span><span class="o">]</span>
+</code></pre></div>
+<h2 id="3-configure-docker">3. Configure Docker</h2>
+<p><strong>What Happens When You Dont Attach Volume?</strong>
+- Run command: <code>docker run -d -p 80:80 counterapp:v1</code>
+- Output: Application works <code>HOWEVER</code> when you restart the container, the counter /get does not persist the data</p>
+<p>Create Volume: <code>docker volume create countit</code>
+Attach Volume: <code>docker run -d -p 80:80 --name fastapi-counter-container --volume countit:/usr/src/app fastapi-counter</code> <em>Note: you can also use the VOLUME command in the Dockerfile</em></p>
+<h1 id="option-4-moving-to-kubernetes"><strong>Option 4:</strong> Moving to Kubernetes</h1>
+<p><strong>Options</strong>
+1. Leverage PVs and PVCs via HostPath
+2. Leverage StatefulSets
+3. Leverage StorageClass Dynamic Provisioning</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Jamal Brown, PMP, CISSP, CKAD
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jtbrown95138/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://govcloudsolutions.io" target="_blank" rel="noopener" title="govcloudsolutions.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="m503.5 204.6-.7-1.8-69.7-181.78c-1.4-3.57-3.9-6.59-7.2-8.64-2.4-1.55-5.1-2.515-8-2.81-2.9-.295-5.7.083-8.4 1.11-2.7 1.02-5.1 2.66-7.1 4.78-1.9 2.12-3.3 4.67-4.1 7.44l-47 144H160.8l-47.1-144c-.8-2.77-2.2-5.31-4.1-7.43-2-2.12-4.4-3.75-7.1-4.77a18.1 18.1 0 0 0-8.38-1.113 18.4 18.4 0 0 0-8.04 2.793 18.09 18.09 0 0 0-7.16 8.64L9.267 202.8l-.724 1.8a129.57 129.57 0 0 0-3.52 82c7.747 26.9 24.047 50.7 46.447 67.6l.27.2.59.4 105.97 79.5 52.6 39.7 32 24.2c3.7 1.9 8.3 4.3 13 4.3 4.7 0 9.3-2.4 13-4.3l32-24.2 52.6-39.7 106.7-79.9.3-.3c22.4-16.9 38.7-40.6 45.6-67.5 8.6-27 7.4-55.8-2.6-82z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>
