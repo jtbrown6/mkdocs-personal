@@ -3,9 +3,48 @@
 ## Purpose
 A good way to find out how to deal with the intracacies of configuring and running Kubernetes On-Prem.
 
-## Bare-Metal Deployment
+## CKAD Commands
 
-Action: `Insert configuration steps here`
+```bash
+# General Commands
+kubectl <action> --help
+kubectl run <podName> --image=nginx --restart=Never --dry-run -o yaml > output.yaml
+kubectl exec -it nginx /bin/bash 
+kubectl exec -it nginx ls /path/found/when/running/describe/pod
+kubectl get pods --all-namespaces
+kubectl get <item> <itemName> --export -o yaml > exported.yaml
+
+# Deployment Commands
+kubectl create deployment nginx --image=nginx
+kubectl run nginx --image=nginx  --replicas=3
+kubectl get deploy busybox --export -o yaml > exported.yaml
+
+kubectl create job nginx --image=nginx
+kubectl create cronjob nginx --image=nginx --schedule="* * * * *"
+
+# Force Update
+kubectl set image deploy/nginx nginx=nginx:1.9.1
+
+# Rollback Update
+kubectl rollout undo deploy/nginx
+kubectl rollout status deploy/nginx
+
+# Observability (Needs Heapster)
+kubectl top pod -n my-namespace
+kubectl top node -n my-namespace
+kubectl logs -f podName containerName    <- stream logs live, container can be left out
+
+# Service
+kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml
+
+# Taint 
+kubectl taint nodes NodeA app=blue:NoSchedule
+
+# Secrets
+kubectl create secret generic my-secret --from-literal=foo=bar -o yaml --dry-run > my-secret.yaml
+
+kubectl get secret SecretName -o yaml    <- view secret
+```
 
 ## Table of Contents
 1. [Flow of Actions](#Flow)
