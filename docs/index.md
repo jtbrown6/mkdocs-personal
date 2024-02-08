@@ -9,27 +9,29 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 * `mkdocs build` - Build the documentation site.
 * `mkdocs -h` - Print help message and exit.
 
-## Project layout
-
-```py title="simpletext.py"
-number = random.int(1,2)
-def functionx()
-  count = number
-  return count
-```
-
 ### Add Line Numbers
 ```py linenums="1"
-def bubble_sort(items):
-    for i in range(len(items)):
-        do something
+from fastapi import FastAPI, HTTPException
+import requests
+import uvicorn
+
+app = FastAPI()
+
+# Define the endpoint for the chat completion API
+API_ENDPOINT = "http://localhost:11434/api/chat"
+
+# Define your model name here
+MODEL_NAME = "mixtral"
+
+@app.post("/chat/")
+async def chat(message: str):
 ```
 
 ### Highlight Code Lines
 ```py hl_lines="2 3"
-def bubble_sort(items):
-    for i in range(len(items)):
-        do something
+    if response.status_code != 200:
+        # Handle any errors from that ollama endpoint on my server
+        raise HTTPException(status_code=response.status_code, detail="Error from the chat API")
 ```
 
 ## Icons and Emojis
